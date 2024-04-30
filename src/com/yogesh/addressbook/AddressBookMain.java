@@ -4,40 +4,81 @@ import java.util.Scanner;
 
 public class AddressBookMain {
 
-    ContactsModule contactsModule = new ContactsModule();
+    ContactsModel contactsModel = new ContactsModel();
     Scanner scanner = new Scanner(System.in);
 
     public void createContact(){
 
         System.out.println("Enter First Name :");
-        contactsModule.setfName(scanner.next());
+        contactsModel.setFirstName(scanner.next());
 
         System.out.println("Enter Last Name :");
-        contactsModule.setlName(scanner.next());
+        contactsModel.setLastName(scanner.next());
 
         System.out.println("Enter Address :");
-        contactsModule.setAddress(scanner.next());
+        contactsModel.setAddress(scanner.next());
 
         System.out.println("Enter City :");
-        contactsModule.setCity(scanner.next());
+        contactsModel.setCity(scanner.next());
 
         System.out.println("Enter State :");
-        contactsModule.setState(scanner.next());
+        contactsModel.setState(scanner.next());
 
         System.out.println("Enter Zip code :");
-        contactsModule.setZipCode(scanner.next());
+        contactsModel.setZipCode(scanner.next());
 
         System.out.println("Enter Phone no. :");
-        contactsModule.setPhoneNo(scanner.next());
+        contactsModel.setPhoneNumber(scanner.next());
 
         System.out.println("Enter Email :");
-        contactsModule.setEmail(scanner.next());
+        contactsModel.setEmail(scanner.next());
 
     }
 
-    void displayContact(){
-        System.out.println(" " + contactsModule.toString());
+    public void displayContact(){
+        System.out.println(" " + contactsModel.toString());
     }
+
+    public void editContact()
+    {
+        String fname;
+        System.out.println("Enter first name to Edit :");
+        fname = scanner.next();
+
+        if(fname.equals(contactsModel.getFirstName()))
+        {
+            System.out.println("Contact Found.");
+
+            System.out.println("Enter Last Name :");
+            contactsModel.setLastName(scanner.next());
+
+            System.out.println("Enter Address :");
+            contactsModel.setAddress(scanner.next());
+
+            System.out.println("Enter City :");
+            contactsModel.setCity(scanner.next());
+
+            System.out.println("Enter State :");
+            contactsModel.setState(scanner.next());
+
+            System.out.println("Enter Zip code :");
+            contactsModel.setZipCode(scanner.next());
+
+            System.out.println("Enter Phone no. :");
+            contactsModel.setPhoneNumber(scanner.next());
+
+            System.out.println("Enter Email :");
+            contactsModel.setEmail(scanner.next());
+
+        }
+        else
+        {
+            System.out.println("Contact Not Found.");
+        }
+    }
+
+
+
 
     public static void main(String[] args){
 
@@ -45,6 +86,8 @@ public class AddressBookMain {
 
         AddressBookMain addressBookMain = new AddressBookMain();
         addressBookMain.createContact();
+        addressBookMain.displayContact();
+        addressBookMain.editContact();
         addressBookMain.displayContact();
 
     }

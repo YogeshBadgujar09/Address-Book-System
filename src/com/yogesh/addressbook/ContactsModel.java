@@ -1,24 +1,22 @@
 package com.yogesh.addressbook;
 
-import com.sun.org.apache.bcel.internal.generic.ARETURN;
+public class ContactsModel {
 
-public class ContactsModule {
-
-    private String fName ;
-    private String lName;
+    private String firstName;
+    private String lastName;
     private String address ;
     private String city ;
     private String state;
     private String zipCode;
-    private String phoneNo;
+    private String phoneNumber;
     private String email ;
 
-    public void setfName(String fName){
-        this.fName = fName ;
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
 
-    public void setlName(String lName){
-        this.lName = lName;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
 
     public void setAddress(String address){
@@ -37,20 +35,20 @@ public class ContactsModule {
         this.zipCode = zipCode ;
     }
 
-    public void setPhoneNo(String phoneNo){
-        this.phoneNo = phoneNo ;
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber = phoneNumber;
     }
 
     public void setEmail(String email){
         this.email = email ;
     }
 
-    public String getfName() {
-        return fName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getlName() {
-        return lName;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getAddress() {
@@ -69,8 +67,8 @@ public class ContactsModule {
         return zipCode;
     }
 
-    public String getPhoneNo() {
-        return phoneNo;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public String getEmail() {
@@ -80,13 +78,13 @@ public class ContactsModule {
     @Override
     public String toString() {
         return "ContactsModule{" +
-                "fName='" + fName + '\'' +
-                ", lName='" + lName + '\'' +
+                "fName='" + firstName + '\'' +
+                ", lName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
-                ", phoneNo='" + phoneNo + '\'' +
+                ", phoneNo='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
