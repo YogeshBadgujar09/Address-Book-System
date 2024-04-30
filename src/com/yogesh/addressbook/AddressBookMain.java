@@ -77,6 +77,19 @@ public class AddressBookMain {
         }
     }
 
+    public void deleteContacts()
+    {
+        System.out.println("Contact is Delete.\n");
+        contactsModel.setFirstName(null);
+        contactsModel.setLastName(null);
+        contactsModel.setAddress(null);
+        contactsModel.setCity(null);
+        contactsModel.setState(null);
+        contactsModel.setZipCode(null);
+        contactsModel.setPhoneNumber(null);
+        contactsModel.setEmail(null);
+    }
+
 
 
 
@@ -88,6 +101,7 @@ public class AddressBookMain {
         addressBookMain.createContact();
         addressBookMain.displayContact();
         addressBookMain.editContact();
+        addressBookMain.deleteContacts();
         addressBookMain.displayContact();
 
     }
