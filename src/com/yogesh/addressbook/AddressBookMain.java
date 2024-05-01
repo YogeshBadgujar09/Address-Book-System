@@ -7,6 +7,49 @@ public class AddressBookMain {
     ContactsModel contactsModel = new ContactsModel();
     Scanner scanner = new Scanner(System.in);
 
+    public void contactOperation()
+    {
+        while(true)
+        {
+
+            int choice ;
+
+            System.out.println("\n1.Create Contact\n2.Display Contact\n3.Edit Contact\n4.Delete Contact\n5.EXIT");
+            System.out.println("Enter Choice :");
+            choice = scanner.nextInt();
+
+            switch(choice)
+            {
+                case 1:
+                    createContact();
+                    break;
+
+                case 2:
+                    displayContact();
+                    break;
+
+                case 3:
+                    editContact();
+                    break;
+
+                case 4:
+                    deleteContacts();
+                    break;
+            }
+
+            if(choice == 5)
+            {
+                System.out.println("EXIT");
+                break;
+            }
+
+        }
+
+
+
+
+    }
+
     public void createContact(){
 
         System.out.println("Enter First Name :");
@@ -79,15 +122,17 @@ public class AddressBookMain {
 
     public void deleteContacts()
     {
-        System.out.println("Contact is Delete.\n");
-        contactsModel.setFirstName(null);
-        contactsModel.setLastName(null);
-        contactsModel.setAddress(null);
-        contactsModel.setCity(null);
-        contactsModel.setState(null);
-        contactsModel.setZipCode(null);
-        contactsModel.setPhoneNumber(null);
-        contactsModel.setEmail(null);
+        System.out.println("Enter First Name To Delete :");
+        String fname = scanner.next();
+
+        if(fname.equals(contactsModel.getFirstName()))
+        {
+            contactsModel = null ;
+            System.out.println("Contact is Delete");
+        }
+        else{
+            System.out.println("Contact is not found .");
+        }
     }
 
 
@@ -98,11 +143,8 @@ public class AddressBookMain {
         System.out.println("Welcome To Address Book");
 
         AddressBookMain addressBookMain = new AddressBookMain();
-        addressBookMain.createContact();
-        addressBookMain.displayContact();
-        addressBookMain.editContact();
-        addressBookMain.deleteContacts();
-        addressBookMain.displayContact();
+
+        addressBookMain.contactOperation();
 
     }
 }
