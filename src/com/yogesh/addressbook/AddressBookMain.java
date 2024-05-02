@@ -21,11 +21,11 @@ public class AddressBookMain {
             switch(choice)
             {
                 case 1:
-                    createContact();
+                   createContact();
                     break;
 
                 case 2:
-                    displayContact();
+                   displayContact();
                     break;
 
                 case 3:
@@ -78,8 +78,14 @@ public class AddressBookMain {
 
     }
 
-    public void displayContact(){
-        System.out.println(" " + contactsModel.toString());
+    public void displayContact()
+    {
+        if(contactsModel != null) {
+            System.out.println(" " + contactsModel.toString());
+        }
+        else{
+            System.out.println("Contact is delete can not Show.");
+        }
     }
 
     public void editContact()
