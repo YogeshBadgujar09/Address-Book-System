@@ -1,56 +1,42 @@
 package com.yogesh.addressbook;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookMain {
-
-    ContactsModel contactsModel = new ContactsModel();
     Scanner scanner = new Scanner(System.in);
 
+    ArrayList<ContactsModel> contactsList = new ArrayList<>();
     public void contactOperation()
     {
-        while(true)
-        {
+        int choice ;
 
-            int choice ;
+        System.out.println("******ADDRESS BOOK******");
+        System.out.println("1.CREATE CONTACT 2.DISPLAY CONTACT 3.EXIT ");
+         do{
+             System.out.println("Enter Your Choice");
+             choice = scanner.nextInt();
 
-            System.out.println("\n1.Create Contact\n2.Display Contact\n3.Edit Contact\n4.Delete Contact\n5.EXIT");
-            System.out.println("Enter Choice :");
-            choice = scanner.nextInt();
+             switch(choice)
+             {
+                 case 1:
+                     createContact();
+                     break;
 
-            switch(choice)
-            {
-                case 1:
-                   createContact();
-                    break;
+                 case 2:
+                     displayContact();
+                     break;
 
-                case 2:
-                   displayContact();
-                    break;
-
-                case 3:
-                    editContact();
-                    break;
-
-                case 4:
-                    deleteContacts();
-                    break;
-            }
-
-            if(choice == 5)
-            {
-                System.out.println("EXIT");
-                break;
-            }
-
-        }
+             }
 
 
 
-
+         }while(choice < 3);
     }
 
     public void createContact(){
+
+        ContactsModel contactsModel = new ContactsModel();
 
         System.out.println("Enter First Name :");
         contactsModel.setFirstName(scanner.next());
@@ -76,19 +62,25 @@ public class AddressBookMain {
         System.out.println("Enter Email :");
         contactsModel.setEmail(scanner.next());
 
+        contactsList.add(contactsModel);
+
     }
 
     public void displayContact()
     {
-        if(contactsModel != null) {
-            System.out.println(" " + contactsModel.toString());
-        }
-        else{
-            System.out.println("Contact is delete can not Show.");
-        }
+
+         for(int i=0 ; i<contactsList.size() ; i++)
+         {
+             ContactsModel contactsModel = contactsList.get(i);
+
+             System.out.println(contactsModel.toString());
+
+         }
+
+
     }
 
-    public void editContact()
+   /* public void editContact()
     {
         String fname;
         System.out.println("Enter first name to Edit :");
@@ -142,7 +134,7 @@ public class AddressBookMain {
     }
 
 
-
+    */
 
     public static void main(String[] args){
 
