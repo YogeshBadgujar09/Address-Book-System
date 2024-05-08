@@ -71,16 +71,13 @@ public class AddressBookMain {
 
     public void displayContact()
     {
-
-         for(int i=0 ; i<contactsList.size() ; i++)
+        for(int i=0 ; i<contactsList.size() ; i++)
          {
              ContactsModel contactsModel = contactsList.get(i);
 
              System.out.println(contactsModel.toString());
 
          }
-
-
     }
 
     public void editContact()
@@ -89,11 +86,13 @@ public class AddressBookMain {
         System.out.println("Enter first name to Edit :");
         fname = scanner.next();
 
+        ContactsModel contactsModel = null ;
+
         boolean flag = false ;
 
         for(int i=0 ; i<contactsList.size() ; i++){
 
-            ContactsModel contactsModel = contactsList.get(i);
+            contactsModel = contactsList.get(i);
 
             if(fname.equals(contactsModel.getFirstName()))
             {
@@ -106,14 +105,7 @@ public class AddressBookMain {
         {
             System.out.println("Given name is Not Found in Contact");
         }
-
-    }
-
-    /*
-        if(fname.equals(contactsModel.getFirstName()))
-        {
-            System.out.println("Contact Found.");
-
+        else{
             System.out.println("Enter Last Name :");
             contactsModel.setLastName(scanner.next());
 
@@ -134,6 +126,15 @@ public class AddressBookMain {
 
             System.out.println("Enter Email :");
             contactsModel.setEmail(scanner.next());
+        }
+
+    }
+
+    /*
+        if(fname.equals(contactsModel.getFirstName()))
+        {
+            System.out.println("Contact Found.");
+
 
         }
         else
