@@ -12,9 +12,9 @@ public class AddressBookMain {
         int choice ;
 
         System.out.println("******ADDRESS BOOK******");
-        System.out.println("1.CREATE CONTACT 2.DISPLAY CONTACT 3.EXIT ");
+        System.out.println("1.CREATE CONTACT 2.DISPLAY CONTACT 3.EDIT CONTACT ");
          do{
-             System.out.println("Enter Your Choice");
+             System.out.println("Enter Your Choice :");
              choice = scanner.nextInt();
 
              switch(choice)
@@ -27,11 +27,14 @@ public class AddressBookMain {
                      displayContact();
                      break;
 
+                 case 3 :
+                     editContact();
+
              }
 
 
 
-         }while(choice < 3);
+         }while(choice < 4);
     }
 
     public void createContact(){
@@ -80,12 +83,33 @@ public class AddressBookMain {
 
     }
 
-   /* public void editContact()
+    public void editContact()
     {
         String fname;
         System.out.println("Enter first name to Edit :");
         fname = scanner.next();
 
+        boolean flag = false ;
+
+        for(int i=0 ; i<contactsList.size() ; i++){
+
+            ContactsModel contactsModel = contactsList.get(i);
+
+            if(fname.equals(contactsModel.getFirstName()))
+            {
+                flag = true;
+                System.out.println("Given name is Found in Contact");
+            }
+        }
+
+        if(!flag)
+        {
+            System.out.println("Given name is Not Found in Contact");
+        }
+
+    }
+
+    /*
         if(fname.equals(contactsModel.getFirstName()))
         {
             System.out.println("Contact Found.");
@@ -116,8 +140,13 @@ public class AddressBookMain {
         {
             System.out.println("Contact Not Found.");
         }
-    }
 
+
+
+
+     */
+
+    /*
     public void deleteContacts()
     {
         System.out.println("Enter First Name To Delete :");
