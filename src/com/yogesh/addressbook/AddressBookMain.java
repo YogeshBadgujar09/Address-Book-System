@@ -75,7 +75,7 @@ public class AddressBookMain {
 
     public void displayContact()
     {
-        if(contactsList.isEmpty() == false){
+        if(!contactsList.isEmpty()){
 
             for(int i=0 ; i<contactsList.size() ; i++)
             {
@@ -94,77 +94,102 @@ public class AddressBookMain {
 
     public void editContact()
     {
-        String fname;
-        System.out.println("Enter first name to Edit :");
-        fname = scanner.next();
 
-        ContactsModel contactsModel = null ;
-
-        boolean flag = false ;
-
-        for(int i=0 ; i<contactsList.size() ; i++){
-
-            contactsModel = contactsList.get(i);
-
-            if(fname.equals(contactsModel.getFirstName()))
-            {
-                flag = true;
-                System.out.println("Given name is Found in Contact");
-
-                System.out.println("Enter Last Name :");
-                contactsModel.setLastName(scanner.next());
-
-                System.out.println("Enter Address :");
-                contactsModel.setAddress(scanner.next());
-
-                System.out.println("Enter City :");
-                contactsModel.setCity(scanner.next());
-
-                System.out.println("Enter State :");
-                contactsModel.setState(scanner.next());
-
-                System.out.println("Enter Zip code :");
-                contactsModel.setZipCode(scanner.next());
-
-                System.out.println("Enter Phone no. :");
-                contactsModel.setPhoneNumber(scanner.next());
-
-                System.out.println("Enter Email :");
-                contactsModel.setEmail(scanner.next());
-
-            }
-        }
-
-        if(!flag)
+        if(!contactsList.isEmpty())
         {
-            System.out.println("Given name is Not Found in Contact");
+            String fname;
+            System.out.println("Enter first name to Edit :");
+            fname = scanner.next();
+
+            ContactsModel contactsModel = null ;
+
+            boolean flag = false ;
+
+            for(int i=0 ; i<contactsList.size() ; i++){
+
+                contactsModel = contactsList.get(i);
+
+                if(fname.equals(contactsModel.getFirstName()))
+                {
+                    flag = true;
+                    System.out.println("Given name is Found in Contact");
+
+                    System.out.println("Enter Last Name :");
+                    contactsModel.setLastName(scanner.next());
+
+                    System.out.println("Enter Address :");
+                    contactsModel.setAddress(scanner.next());
+
+                    System.out.println("Enter City :");
+                    contactsModel.setCity(scanner.next());
+
+                    System.out.println("Enter State :");
+                    contactsModel.setState(scanner.next());
+
+                    System.out.println("Enter Zip code :");
+                    contactsModel.setZipCode(scanner.next());
+
+                    System.out.println("Enter Phone no. :");
+                    contactsModel.setPhoneNumber(scanner.next());
+
+                    System.out.println("Enter Email :");
+                    contactsModel.setEmail(scanner.next());
+
+                }
+            }
+
+            if(!flag)
+            {
+                System.out.println("Given name is Not Found in Contact");
+            }
+
+
+
         }
+        else
+        {
+            System.out.println("Contacts are not available In AddressBook");
+        }
+
+
+
     }
 
    public void deleteContacts()
     {
-        System.out.println("Enter First Name To Delete :");
-        String fname = scanner.next();
 
-        boolean flag = false ;
-
-        for(int i=0 ; i<contactsList.size() ; i++)
+        if(!contactsList.isEmpty())
         {
-            ContactsModel contactsModel = contactsList.get(i);
+            System.out.println("Enter First Name To Delete :");
+            String fname = scanner.next();
 
-            if(fname.equals(contactsModel.getFirstName()))
+            boolean flag = false ;
+
+            for(int i=0 ; i<contactsList.size() ; i++)
             {
-                flag = true ;
-                contactsList.remove(contactsModel);
-                System.out.println("Contact is Delete");
+                ContactsModel contactsModel = contactsList.get(i);
+
+                if(fname.equals(contactsModel.getFirstName()))
+                {
+                    flag = true ;
+                    contactsList.remove(contactsModel);
+                    System.out.println("Contact is Delete");
+                }
+
             }
 
+            if(!flag){
+
+                System.out.println("Contact Not found .");
+            }
+
+
+        }
+        else
+        {
+            System.out.println("Contacts are not available In AddressBook");
         }
 
-        if(!flag){
-
-            System.out.println("Contact Not found .");
-        }
     }
 
 
