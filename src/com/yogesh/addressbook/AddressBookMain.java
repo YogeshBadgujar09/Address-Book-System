@@ -11,8 +11,8 @@ public class AddressBookMain {
     {
         int choice ;
 
-        System.out.println("******ADDRESS BOOK******");
-        System.out.println("1.CREATE CONTACT 2.DISPLAY CONTACT 3.EDIT CONTACT 4.DELETE CONTACT");
+        System.out.println("\n******ADDRESS BOOK******");
+        System.out.println("1.CREATE CONTACT \n2.DISPLAY CONTACT \n3.EDIT CONTACT \n4.DELETE CONTACT");
          do{
              System.out.println("\nEnter Your Choice :");
              choice = scanner.nextInt();
@@ -27,18 +27,18 @@ public class AddressBookMain {
                      displayContact();
                      break;
 
-                 case 3:
+                 /*case 3:
                      editContact();
                      break ;
 
                  case 4  :
                      deleteContacts();
-                     break ;
+                     break ;*/
              }
 
 
 
-         }while(choice < 5);
+         }while(choice < 3);
     }
 
     public void createContact(){
@@ -75,31 +75,57 @@ public class AddressBookMain {
 
     public void displayContact()
     {
-        if(!contactsList.isEmpty()){
+            if(checkContact()) {
+                for (int i = 0; i < contactsList.size(); i++) {
 
-            for(int i=0 ; i<contactsList.size() ; i++)
-            {
+                    ContactsModel contactsModel = contactsList.get(i);
 
-                ContactsModel contactsModel = contactsList.get(i);
+                    System.out.println("\n" + contactsModel.toString());
 
-                System.out.println("\n" + contactsModel.toString());
-
+                }
             }
-        }
-        else {
-            System.out.println("Contacts are not available In AddressBook");
-        }
+
 
     }
 
-    public void editContact()
+    public boolean checkContact()
+    {
+         if(!contactsList.isEmpty())
+         {
+             System.out.println("Contacts Available");
+             System.out.println("Enter First Name To Delete :");
+             String fname = scanner.next();
+
+             boolean flag = false ;
+
+             for(int i=0 ; i<contactsList.size() ; i++)
+             {
+                 ContactsModel contactsModel = contactsList.get(i);
+
+                 if(fname.equals(contactsModel.getFirstName()))
+                 {
+                     flag = true ;
+                 }
+
+             }
+
+             return true ;
+         }
+         else
+         {
+             System.out.println("Contacts are not available in Address Book");
+             contactOperation();
+             return false ;
+         }
+    }
+
+
+
+  /*  public void editContact()
     {
 
         if(!contactsList.isEmpty())
         {
-            String fname;
-            System.out.println("Enter first name to Edit :");
-            fname = scanner.next();
 
             ContactsModel contactsModel = null ;
 
@@ -154,43 +180,12 @@ public class AddressBookMain {
 
 
     }
+*/
 
-   public void deleteContacts()
-    {
-
-        if(!contactsList.isEmpty())
-        {
-            System.out.println("Enter First Name To Delete :");
-            String fname = scanner.next();
-
-            boolean flag = false ;
-
-            for(int i=0 ; i<contactsList.size() ; i++)
-            {
-                ContactsModel contactsModel = contactsList.get(i);
-
-                if(fname.equals(contactsModel.getFirstName()))
-                {
-                    flag = true ;
-                    contactsList.remove(contactsModel);
-                    System.out.println("Contact is Delete");
-                }
-
-            }
-
-            if(!flag){
-
-                System.out.println("Contact Not found .");
-            }
-
-
-        }
-        else
-        {
-            System.out.println("Contacts are not available In AddressBook");
-        }
-
-    }
+   public void deleteContacts(ContactsModel contactsModel)
+   {
+        contactsList.remove(contactsModel);
+   }
 
 
 
