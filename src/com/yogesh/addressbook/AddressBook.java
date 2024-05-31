@@ -10,9 +10,8 @@ public class AddressBook {
     public void contactOperation()
     {
         int choice ;
-
-        System.out.println("\n****** ADDRESS BOOK *****");
-        System.out.println("1.CREATE CONTACT \n2.D ISPLAY CONTACT \n3.EDIT CONTACT \n4.DELETE CONTACT");
+        System.out.println("\nContact Maintain in Address Book");
+        System.out.println("1.CREATE CONTACT \n2.DISPLAY CONTACT \n3.EDIT CONTACT \n4.DELETE CONTACT");
          do{
              System.out.println("\nEnter Your Choice :");
              choice = scanner.nextInt();
@@ -80,7 +79,9 @@ public class AddressBook {
     public void displayContact()
     {
             if(!contactsList.isEmpty()) {
-                for (ContactsModel contactsModel : contactsList) {
+                for (int i = 0; i < contactsList.size(); i++) {
+
+                    ContactsModel contactsModel = contactsList.get(i);
 
                     System.out.println("\n" + contactsModel.toString());
 
@@ -179,5 +180,4 @@ public class AddressBook {
         }
 
    }
-
 }
