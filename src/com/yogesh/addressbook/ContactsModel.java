@@ -1,4 +1,7 @@
 package com.yogesh.addressbook;
+import java.sql.Struct;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class ContactsModel {
 
@@ -11,32 +14,42 @@ public class ContactsModel {
     private String phoneNumber;
     private String email ;
 
+    Pattern pattern ;
+    Matcher matcher ;
     public void setFirstName(String firstName){
-        this.firstName = firstName;
+
+             this.firstName = firstName;
     }
 
+
     public void setLastName(String lastName){
+
         this.lastName = lastName;
     }
 
-    public void setAddress(String address){
-        this.address = address ;
+    public void setAddress(String address) {
+
+        this.address = address;
     }
 
-    public void setCity(String city){
-        this.city = city;
+    public  void setCity(String city)
+    {
+
+            this.city = city;
     }
 
-    public void setState(String state){
-        this.state = state ;
+    public  void setState(String state){
+
+            this.state= state;
+
     }
 
     public void setZipCode(String zipCode){
-        this.zipCode = zipCode ;
+        this.zipCode = zipCode;
     }
 
     public void setPhoneNumber(String phoneNumber){
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber ;
     }
 
     public void setEmail(String email){

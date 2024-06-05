@@ -16,7 +16,8 @@ public class MultipleAddressBookMain {
         System.out.println("**** ADDRESS BOOK ****");
 
         do{
-            System.out.println("1.Add AddressBook \n2.Display AddressBook \n3.Select Address Book \n4.Delete Address Book");
+            System.out.println("\n1.Add AddressBook \n2.Display AddressBook \n3.Select Address Book \n4.Delete Address Book \n5.Contact find By City Name");
+
             System.out.println("\nEnter Choice :");
             choice = scanner.nextInt();
 
@@ -64,10 +65,12 @@ public class MultipleAddressBookMain {
         }
 
     }
-    public void displayAddressBook()
-    {
+   // public void displayAddressBook()
+
+     public void displayAddressBook()
+     {
         System.out.println(multipleAddressBook.keySet());
-    }
+        }
 
     public void selectAddressBook()
     {
@@ -102,7 +105,11 @@ public class MultipleAddressBookMain {
     }
 
     void findContactByCity() {
-        String city = "shahada";
+
+        System.out.println("Enter city Name :");
+        String city = scanner.next();
+
+        boolean flag = false ;
 
         for (String addressBookName : multipleAddressBook.keySet()) {
 
@@ -114,7 +121,12 @@ public class MultipleAddressBookMain {
                 ContactsModel contactsModel = addressBook.contactsList.get(i);
                 if(city.equalsIgnoreCase(contactsModel.getCity())) {
                     System.out.println(contactsModel.toString());
+                    flag = true ;
                 }
+            }
+            if(!flag)
+            {
+                System.out.println("Enter Valid City Name ");
             }
 
         }
