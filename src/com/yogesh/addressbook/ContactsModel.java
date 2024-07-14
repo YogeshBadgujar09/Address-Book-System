@@ -1,5 +1,5 @@
 package com.yogesh.addressbook;
-import java.sql.Struct;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -16,9 +16,31 @@ public class ContactsModel {
 
     Pattern pattern ;
     Matcher matcher ;
+
+    public boolean CharacterValidation(String userData)
+    {
+        pattern = Pattern.compile("^[A-Za-z]{3,}$");
+        matcher = pattern.matcher(userData);
+
+        while(!matcher.matches())
+        {
+            System.out.println("Enter Minimum Three Character in Data.");
+            return false ;
+        }
+
+        return true ;
+
+    }
+
     public void setFirstName(String firstName){
 
-             this.firstName = firstName;
+        if(CharacterValidation(String firstName)){
+            this.firstName = firstName ;
+        }
+        else {
+
+        }
+
     }
 
 
@@ -34,7 +56,6 @@ public class ContactsModel {
 
     public  void setCity(String city)
     {
-
             this.city = city;
     }
 
