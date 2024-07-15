@@ -45,50 +45,30 @@ public class AddressBook {
         ContactsModel contactsModel = new ContactsModel();
 
         System.out.println("Enter First Name :");
-        if(contactsModel.setFirstName(scanner.next()))
-        {
-            System.out.println("Enter Last Name :");
-            if(contactsModel.setLastName(scanner.next()))
-            {
-                System.out.println("Enter Address :");
-                if(contactsModel.setAddress(scanner.next()))
-                {
-                    System.out.println("Enter City :");
-                    if(contactsModel.setCity(scanner.next()))
-                    {
-                        System.out.println("Enter State :");
-                        if(contactsModel.setState(scanner.next()))
-                        {
-                            System.out.println("Enter Zip code :");
-                            if(contactsModel.setZipCode(scanner.next()))
-                            {
-                                System.out.println("Enter Phone no. :");
-                                if(contactsModel.setPhoneNumber(scanner.next()))
-                                {
-                                    System.out.println("Enter Email :");
-                                    contactsModel.setEmail(scanner.next());
+        contactsModel.setFirstName(contactsModel.checkInput(scanner.next(),scanner));
 
-                                    contactsList.add(contactsModel);
+        System.out.println("Enter Last Name :");
+        contactsModel.setLastName(contactsModel.checkInput(scanner.next(),scanner));
 
-                                }
-                            }
+        System.out.println("Enter Address :");
+        contactsModel.setAddress(contactsModel.checkInput(scanner.next(),scanner));
 
+        System.out.println("Enter City :");
+        contactsModel.setCity(contactsModel.checkInput(scanner.next(),scanner));
 
+        System.out.println("Enter State :");
+        contactsModel.setState(contactsModel.checkInput(scanner.next(),scanner));
 
-                        }
+        System.out.println("Enter Zip code :");
+        contactsModel.setZipCode(scanner.next(),scanner);
 
+        System.out.println("Enter Phone no. :");
+        contactsModel.setPhoneNumber(scanner.next(),scanner);
 
-                    }
+        System.out.println("Enter Email :");
+        contactsModel.setEmail(scanner.next(),scanner);
 
-
-                }
-
-            }
-
-
-        }
-
-
+        contactsList.add(contactsModel);
 
     }
 
@@ -99,9 +79,7 @@ public class AddressBook {
     public void displayContact()
     {
             if(!contactsList.isEmpty()) {
-                for (int i = 0; i < contactsList.size(); i++) {
-
-                    ContactsModel contactsModel = contactsList.get(i);
+                for (ContactsModel contactsModel : contactsList) {
 
                     System.out.println("\n" + contactsModel.toString());
 
@@ -128,12 +106,12 @@ public class AddressBook {
              boolean flag = false;
 
              ContactsModel contactsModel = null;
-             for (int i = 0; i < contactsList.size(); i++) {
-                 contactsModel = contactsList.get(i);
+             for (ContactsModel model : contactsList) {
+                 contactsModel = model;
 
                  if (fname.equals(contactsModel.getFirstName())) {
                      flag = true;
-                     break ;
+                     break;
                  }
 
              }
@@ -152,7 +130,9 @@ public class AddressBook {
     }
 
 
-
+    /**
+     * following function is create to edit information of Contact
+     */
    public void editContact()
     {
         ContactsModel contactsModel = checkContactExist() ;
@@ -162,25 +142,27 @@ public class AddressBook {
 //            System.out.println("Given name Found in AddressBook");
 
             System.out.println("Enter Last Name :");
-            contactsModel.setLastName(scanner.next());
+            contactsModel.setLastName(contactsModel.checkInput(scanner.next(),scanner));
 
             System.out.println("Enter Address :");
-            contactsModel.setAddress(scanner.next());
+            contactsModel.setAddress(contactsModel.checkInput(scanner.next(),scanner));
 
             System.out.println("Enter City :");
-            contactsModel.setCity(scanner.next());
+            contactsModel.setCity(contactsModel.checkInput(scanner.next(),scanner));
 
             System.out.println("Enter State :");
-            contactsModel.setState(scanner.next());
+            contactsModel.setState(contactsModel.checkInput(scanner.next(),scanner));
 
             System.out.println("Enter Zip code :");
-            contactsModel.setZipCode(scanner.next());
+            contactsModel.setZipCode(scanner.next(),scanner);
 
             System.out.println("Enter Phone no. :");
-            contactsModel.setPhoneNumber(scanner.next());
+            contactsModel.setPhoneNumber(scanner.next(),scanner);
 
             System.out.println("Enter Email :");
-            contactsModel.setEmail(scanner.next());
+            contactsModel.setEmail(scanner.next(),scanner);
+
+
         }
     }
 

@@ -1,5 +1,5 @@
 package com.yogesh.addressbook;
-import java.sql.Struct;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -14,136 +14,82 @@ public class ContactsModel {
     private String phoneNumber;
     private String email ;
 
-    Pattern pattern ;
-    Matcher matcher ;
-    public boolean setFirstName(String firstName){
 
-        pattern = Pattern.compile("^[A-Za-z]{3,}$");
-        matcher = pattern.matcher(firstName);
+    public String checkInput(String data , Scanner scanner)
+    {
+        Pattern pattern = Pattern.compile("^[A-Za-z]{3,}$");
+        Matcher matcher = pattern.matcher(data);
 
-        if(matcher.matches())
+        while(!matcher.matches())
         {
-            this.firstName = firstName;
-            return true ;
+            System.out.println("Enter valid data [Minimum three Character].");
+            data = scanner.next();
+            matcher = pattern.matcher(data);
         }
-        else {
-            System.out.println("Please enter Minimum 3 character");
-            return  false ;
+
+        return data ;
+    }
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
+    public void setState(String state){
+        this.state= state;
+    }
+
+    public void setZipCode(String zipCode ,Scanner scanner){
+
+        Pattern pattern = Pattern.compile("^[0-6]{6}$");
+        Matcher matcher = pattern.matcher(zipCode);
+
+        while(!matcher.matches())
+        {
+            System.out.println("Please enter valid Zip Code[Enter 10 Digits]");
+            zipCode = scanner.next();
+            matcher = pattern.matcher(zipCode);
         }
 
     }
 
-    public  boolean setLastName(String lastName){
+    public void setPhoneNumber(String phoneNumber , Scanner scanner){
 
+        Pattern pattern = Pattern.compile("^[0-9]{10}$");
+        Matcher matcher = pattern.matcher(phoneNumber);
 
-        pattern = Pattern.compile("^[A-Za-z]{3,}$");
-        matcher = pattern.matcher(lastName);
-
-        if(matcher.matches())
+        while(!matcher.matches())
         {
-            this.lastName = lastName;
-            return true ;
+            System.out.println("Enter 6 Digits].");
+            phoneNumber = scanner.next();
+            matcher = pattern.matcher(phoneNumber);
         }
-        else {
-            System.out.println("Please enter Minimum 3 character");
-            return false ;
-        }
-
-
-
     }
 
-    public boolean  setAddress(String address){
+    public void setEmail(String email , Scanner scanner){
 
-        pattern = Pattern.compile("^[A-Za-z]{3,}$");
-        matcher = pattern.matcher(address);
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]+@" +  "[a-zA-Z0-9-]+" + "\\." + "[a-z" + "]{2,3}$");
+        Matcher matcher = pattern.matcher(email);
 
-        if(matcher.matches())
+        while(!matcher.matches())
         {
-            this.address = address;
-            return true ;
-        }
-        else {
-            System.out.println("Please enter Minimum 3 character");
-            return false ;
+            System.out.println("Enter valid email id ");
+            email = scanner.next();
+            matcher = pattern.matcher(email);
         }
 
-       // this.address = address ;
-    }
-
-    public boolean setCity(String city){
-
-        pattern = Pattern.compile("^[A-Za-z]{3,}$");
-        matcher = pattern.matcher(city);
-
-        if(matcher.matches())
-        {
-            this.city = city;
-            return  true  ;
-        }
-        else {
-            System.out.println("Please enter Minimum 3 character");
-            return false ;
-        }
-
-    }
-
-    public boolean setState(String state){
-
-        pattern = Pattern.compile("^[A-Za-z]{3,}$");
-        matcher = pattern.matcher(state);
-
-        if(matcher.matches())
-        {
-            this.state= state;
-            return true;
-
-        }
-        else {
-            System.out.println("Please enter Minimum 3 character");
-            return  false;
-
-        }
-
-    }
-
-    public boolean setZipCode(String zipCode){
-
-        pattern = Pattern.compile("^[0-9]{6}$");
-        matcher = pattern.matcher(zipCode);
-
-        if(matcher.matches())
-        {
-            this.zipCode = zipCode;
-            return true ;
-        }
-        else {
-            System.out.println("Please enter Minimum 3 character");
-            return false ;
-        }
-
-
-    }
-
-    public boolean setPhoneNumber(String phoneNumber){
-
-        pattern = Pattern.compile("^[0-9]{10}$");
-        matcher = pattern.matcher(phoneNumber);
-
-        if(matcher.matches())
-        {
-            this.phoneNumber = phoneNumber ;
-            return true ;
-        }
-        else {
-            System.out.println("Please enter Minimum 3 character");
-            return false;
-        }
-
-    }
-
-    public void setEmail(String email){
         this.email = email ;
+
     }
 
     public String getFirstName() {
