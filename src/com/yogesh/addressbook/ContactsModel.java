@@ -1,5 +1,9 @@
 package com.yogesh.addressbook;
+<<<<<<< HEAD
 
+=======
+import java.util.Scanner;
+>>>>>>> UC-6-Multiple_AddressBook_and_Maintain
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -14,6 +18,7 @@ public class ContactsModel {
     private String phoneNumber;
     private String email ;
 
+<<<<<<< HEAD
     Pattern pattern ;
     Matcher matcher ;
 
@@ -74,7 +79,84 @@ public class ContactsModel {
     }
 
     public void setEmail(String email){
+=======
+
+    public String checkInput(String data , Scanner scanner)
+    {
+        Pattern pattern = Pattern.compile("^[A-Za-z]{3,}$");
+        Matcher matcher = pattern.matcher(data);
+
+        while(!matcher.matches())
+        {
+            System.out.println("Enter valid data [Minimum three Character].");
+            data = scanner.next();
+            matcher = pattern.matcher(data);
+        }
+
+        return data ;
+    }
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
+    public void setState(String state){
+        this.state= state;
+    }
+
+    public void setZipCode(String zipCode ,Scanner scanner){
+
+        Pattern pattern = Pattern.compile("^[0-6]{6}$");
+        Matcher matcher = pattern.matcher(zipCode);
+
+        while(!matcher.matches())
+        {
+            System.out.println("Please enter valid Zip Code[Enter 10 Digits]");
+            zipCode = scanner.next();
+            matcher = pattern.matcher(zipCode);
+        }
+
+    }
+
+    public void setPhoneNumber(String phoneNumber , Scanner scanner){
+
+        Pattern pattern = Pattern.compile("^[0-9]{10}$");
+        Matcher matcher = pattern.matcher(phoneNumber);
+
+        while(!matcher.matches())
+        {
+            System.out.println("Enter 6 Digits].");
+            phoneNumber = scanner.next();
+            matcher = pattern.matcher(phoneNumber);
+        }
+    }
+
+    public void setEmail(String email , Scanner scanner){
+
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]+@" +  "[a-zA-Z0-9-]+" + "\\." + "[a-z" + "]{2,3}$");
+        Matcher matcher = pattern.matcher(email);
+
+        while(!matcher.matches())
+        {
+            System.out.println("Enter valid email id ");
+            email = scanner.next();
+            matcher = pattern.matcher(email);
+        }
+
+>>>>>>> UC-6-Multiple_AddressBook_and_Maintain
         this.email = email ;
+
     }
 
     public String getFirstName() {
